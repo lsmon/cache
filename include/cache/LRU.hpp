@@ -3,6 +3,7 @@
 
 #include "Cache.hpp"
 #include <list>
+#include <algorithm>
 
 template<typename Key, typename Value>
 class LRUCache : public Cache<Key, Value> {
