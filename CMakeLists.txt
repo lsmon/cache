@@ -30,6 +30,8 @@ add_library(${LIB_NAME} ${INC} ${INC_CACHE} sources/cache/Caching.cpp)
 
 # Add the executable
 add_executable(${PROJECT_NAME}_test test/main.cpp)
+find_package(Threads REQUIRED)
+target_link_libraries(${PROJECT_NAME}_test Threads::Threads)
 add_test(TEST_ALL_CACHES ${PROJECT_NAME}_test COMMAND ${PROJECT_NAME}_test)
 
 # Link the library to the executable
