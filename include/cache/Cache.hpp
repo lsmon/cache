@@ -29,10 +29,21 @@ public:
     }
 
     virtual void put(const Key& key, const Value& value) = 0;
+
     virtual Value get(const Key& key) = 0;
+
     virtual void erase(const Key& key) {
         std::lock_guard<std::mutex> lock(mtx);
         data.erase(key);
+    }
+
+    virtual std::vector<Key> keys() const {
+        std::lock_guard<std::mutex> lock(mtx);
+        std::vector<Key> keys;
+        for (const auto& pair : data) {
+            keys.push_back(pair.first);
+        }
+        return keys;
     }
 
     size_t getCapacity() const {
