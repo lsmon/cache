@@ -5,6 +5,7 @@
 #include <mutex>
 #include <memory>
 #include <stdexcept>
+#include <vector>
 
 template<typename Key, typename Value>
 class Cache {
